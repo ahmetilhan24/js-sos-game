@@ -1,0 +1,85 @@
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    width: 100vw;
+    height: 100vh;
+    background-color: #4708ad18;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.board{
+    width: 440px;
+    height: 440px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.cell{
+    width: 31.33%;
+    min-width: 31.33%;
+    height: 31.33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.cell.match svg{
+    animation: matched .1s ease alternate 6;
+}
+@keyframes  matched{
+    to{
+        transform: scale(1.1);
+    }
+}
+.cell:nth-of-type(2), .cell:nth-of-type(8){
+    border-left: 8px solid #4608ad;
+    border-right: 8px solid #4608ad;
+}
+.cell:nth-of-type(5){
+    border: 8px solid #4608ad;
+}
+.cell:nth-of-type(4), .cell:nth-of-type(6){
+    border-top: 8px solid #4608ad;
+    border-bottom: 8px solid #4608ad;
+}
+.icon{
+    width: 70px;
+}
+.icon-o{
+    fill: #4608ad;
+}
+.icon-x{
+    fill: #4608ad;
+}
+.score-container, .score{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 40px;
+}
+.score{
+    flex-direction: column;
+    margin: 55px;
+}
+.score svg{
+    width: 30px;
+}
+
+.score span{
+    font-size: 22px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #4608ad;
+    margin-top: 20px;
+    font-weight: bold;
+}

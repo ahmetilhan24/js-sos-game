@@ -2,15 +2,17 @@
     margin: 0;
     padding: 0;
     outline: none;
+    box-sizing: border-box;
 }
 body{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 .container{
     width: 100vw;
     height: 100vh;
-    background-color: #4708ad18;
+    background-color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,6 +25,7 @@ body{
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    background-color: #4708ad18;
 }
 .cell{
     width: 31.33%;
@@ -42,18 +45,18 @@ body{
     }
 }
 .cell:nth-of-type(2), .cell:nth-of-type(8){
-    border-left: 8px solid #4608ad;
-    border-right: 8px solid #4608ad;
+    border-left: 3px solid #4608ad;
+    border-right: 3px solid #4608ad;
 }
 .cell:nth-of-type(5){
-    border: 8px solid #4608ad;
+    border: 3px solid #4608ad;
 }
 .cell:nth-of-type(4), .cell:nth-of-type(6){
-    border-top: 8px solid #4608ad;
-    border-bottom: 8px solid #4608ad;
+    border-top: 3px solid #4608ad;
+    border-bottom: 3px solid #4608ad;
 }
 .icon{
-    width: 70px;
+    width: 42px;
 }
 .icon-o{
     fill: #4608ad;

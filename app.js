@@ -26,7 +26,7 @@ let isNext = true;
 let winner = false;
 //winner comibinations
 var winnerCombination = [
-    [0, 1, 3],
+    [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
     [0, 3, 6],
@@ -88,11 +88,11 @@ const handleClick = (e) => {
             reset();
         }
         else {
-            alert("Bekleyiniz...")
+            return;
         }
     }
     else {
-        alert("Bekleyiniz...")
+        alert("Bekleniyor...")
     }
 
 }
@@ -104,26 +104,32 @@ const reset = () => {
         if (winner === "O" || winner === "X") {
             for (let r = 0; r < elems.cell.length; r++) {
                 const squares = elems.cell[r];
-                squares.setAttribute("data-cell", "");
-                squares.innerHTML = "";
-                squares.classList.remove("match");
-                isNext = true;
-                winner = false;
+                clearGame(squares, true);
             }
             squares = [];
         }
-        else if(winner === false && squares.length === 9){
+        else if (winner === false && squares.length === 9) {
             for (let r = 0; r < elems.cell.length; r++) {
                 const squares = elems.cell[r];
-                squares.setAttribute("data-cell", "");
-                squares.innerHTML = "";
-                isNext = true;
-                winner = false;
+                clearGame(squares, false);
             }
             squares = [];
         }
-        else{
+        else {
             return;
         }
     }, 1400)
+}
+//clear cell and reset 
+const clearGame = (elem, winn) => {
+    elem.setAttribute("data-cell", "");
+    elem.innerHTML = "";
+    if (winn) {
+        elem.classList.remove("match");
+    }
+    else {
+        return;
+    }
+    isNext = true;
+    winner = false;
 }

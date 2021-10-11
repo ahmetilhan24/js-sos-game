@@ -24,6 +24,10 @@ let track = "O"; // O ya da X
 let isNext = true;
 //winner
 let winner = false;
+//game count for finish
+let gameCount = 0;
+//limit for game count
+let gameLimit = 4;
 //winner comibinations
 var winnerCombination = [
     [0, 1, 2],
@@ -56,6 +60,8 @@ const winnerControl = () => {
             elems.cell[p3].classList.add("match");
             //stop next
             isNext = false;
+            //game count +
+            gameCount++;
         }
     }
 }
@@ -64,37 +70,42 @@ const handleClick = (e) => {
     const cell = e;
     const dataCell = cell.getAttribute("data-cell") || "";
     //empty control 
-    if (isNext) {
-        if (dataCell === "") {
-            //track 
-            switch (track) {
-                case "O":
-                    cell.innerHTML = icons.iconO;
-                    cell.setAttribute("data-cell", "O");
-                    //winner control
-                    winnerControl();
-                    track = "X";
-                    break;
-                case "X":
-                    cell.innerHTML = icons.iconX;
-                    cell.setAttribute("data-cell", "X");
-                    //winner control
-                    winnerControl();
-                    track = "O";
-                    break;
+    if (gameCount < 1) {
+        if (isNext) {
+            if (dataCell === "") {
+                //track 
+                switch (track) {
+                    case "O":
+                        cell.innerHTML = icons.iconO;
+                        cell.setAttribute("data-cell", "O");
+                        //winner control
+                        winnerControl();
+                        track = "X";
+                        break;
+                    case "X":
+                        cell.innerHTML = icons.iconX;
+                        cell.setAttribute("data-cell", "X");
+                        //winner control
+                        winnerControl();
+                        track = "O";
+                        break;
+                }
+                //squeares for reset tie
+                squares.push(cell);
+                reset();
             }
-            //squeares for reset tie
-            squares.push(cell);
-            reset();
+            else {
+                return;
+            }
         }
         else {
-            return;
+            alert("Bekleniyor...")
         }
     }
+    //finish and winner result
     else {
-        alert("Bekleniyor...")
+        finish()
     }
-
 }
 //reset game 
 var timeOut;
@@ -132,4 +143,24 @@ const clearGame = (elem, winn) => {
     }
     isNext = true;
     winner = false;
+}
+//game finished
+const finish = () => {
+    if (scores.xScore > scores.oScore) {
+        console.log("Kazanan x");
+    }
+    else if (scores.xScore < scores.oScore) {
+        console.log("Kazanan o")
+    }
+    else {
+        console.log("Oyun berabere bitti");
+    }
+    //new game 
+    var newGame = confirm("Yeni oyun ister misin?")
+    if(newGame === true){
+        //devam edecem
+    }
+    else{
+        return;
+    }
 }

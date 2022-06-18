@@ -88,7 +88,7 @@ body {
 }
 .score svg {
   width: 30px;
-  stroke-width: 5px;
+  stroke-width: 8px;
   fill: transparent;
 }
 .score svg.o {

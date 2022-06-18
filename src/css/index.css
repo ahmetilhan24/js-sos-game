@@ -34,6 +34,7 @@ body {
   height: 100vh;
   background-color: var(--main-color);
   flex-direction: column;
+  min-height: 794px;
 }
 .board {
   width: 440px;
@@ -48,11 +49,11 @@ body {
   cursor: pointer;
 }
 .cell.match svg {
-  animation: matched 0.1s ease alternate 6;
+  animation: matched 0.2s ease alternate 6;
 }
 @keyframes matched {
   to {
-    transform: scale(1.1);
+    transform: scale(1.3);
   }
 }
 .cell:nth-of-type(2),
@@ -68,14 +69,16 @@ body {
   border-top: var(--border-width) solid var(--main-color-dark);
   border-bottom: var(--border-width) solid var(--main-color-dark);
 }
-.icon {
+.cell .icon {
   width: 60px;
+  stroke-width: 12px;
+  fill: transparent;
 }
-.icon-o {
-  fill: var(--icon-o);
+.cell .icon.icon-o {
+  stroke: var(--icon-o);
 }
-.icon-x {
-  fill: var(--icon-x);
+.cell .icon.icon-x {
+  stroke: var(--icon-x);
 }
 .score-container,
 .score {

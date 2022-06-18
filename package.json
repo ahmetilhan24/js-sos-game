@@ -1,0 +1,19 @@
+{
+  "name": "js-xox-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahmetilhan24/js-xox-game.git"
+  },
+  "author": "Ahmet ilhan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ahmetilhan24/js-xox-game/issues"
+  },
+  "homepage": "https://github.com/ahmetilhan24/js-xox-game#readme"
+}

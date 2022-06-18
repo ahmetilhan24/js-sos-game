@@ -1,4 +1,3 @@
-var squares = [];
 //dom elements
 const elems = {
   cell: document.querySelectorAll(".cell"),
@@ -49,7 +48,6 @@ var winnerCombination = [
 ];
 
 // Get cell game value
-
 const getCellValue = (cell) => {
   return elems.cell[cell].getAttribute(attrKey);
 };
@@ -64,26 +62,25 @@ const winnerControl = () => {
       getCellValue(p1) === getCellValue(p2) &&
       getCellValue(p2) === getCellValue(p3)
     ) {
+      winner = track;
       // Winner O
       if (track === "O") {
-        winner = "O";
         ++scores.oScore;
         elems.oScore.innerHTML = scores.oScore;
       }
       // winner X
       else {
-        winner = "X";
         ++scores.xScore;
         elems.xScore.innerHTML = scores.xScore;
       }
-      // stop game
-      isNext = false;
-      // End controll
-      gameCount > gameLimit ? resetGame() : clearGame();
       // For animation  -> winner clas
       elems.cell[p1].classList.add("match");
       elems.cell[p2].classList.add("match");
       elems.cell[p3].classList.add("match");
+      // stop game
+      isNext = false;
+      // End controll
+      gameCount === gameLimit ? resetGame() : clearGame();
       //game count +
       gameCount++;
     }
@@ -94,7 +91,7 @@ const handleClick = (e) => {
   const cell = e;
   const dataCell = cell.getAttribute("data-cell") || "";
   //empty control
-  if (gameCount < gameLimit && isNext) {
+  if (isNext) {
     if (dataCell === "") {
       //track
       switch (track) {
@@ -108,11 +105,8 @@ const handleClick = (e) => {
           cell.setAttribute("data-cell", "X");
           track = "O";
           break;
-        default:
-          winnerControl();
       }
-      //squeares for reset tie
-      squares.push(cell);
+      winnerControl();
     }
   }
 };
@@ -120,8 +114,12 @@ const handleClick = (e) => {
 const resetGame = () => {
   track = "O";
   isNext = true;
-  winner = false;
+  winner = "";
   gameCount = 0;
+  scores.oScore = 0;
+  scores.xScore = 0;
+  elems.oScore.innerHTML = scores.oScore;
+  elems.xScore.innerHTML = scores.xScore;
   clearCells();
 };
 //clear cell
@@ -139,22 +137,7 @@ const clearGame = () => {
   // Clear cells
   clearCells();
   winner = "";
-  isNext = true;
-};
-//game finished
-const finish = () => {
-  if (scores.xScore > scores.oScore) {
-    console.log("Kazanan x");
-  } else if (scores.xScore < scores.oScore) {
-    console.log("Kazanan o");
-  } else {
-    console.log("Oyun berabere bitti");
-  }
-  //new game
-  var newGame = confirm("Yeni oyun ister misin?");
-  if (newGame === true) {
-    //devam edecem
-  } else {
-    return;
-  }
+  window.setTimeout(() => {
+    isNext = true;
+  }, gameDelayTime);
 };

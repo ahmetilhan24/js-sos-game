@@ -1,8 +1,8 @@
 {
   "name": "js-xox-game",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "1.0",
+  "description": "This version is the first stable release. It is free of errors.",
+  "main": "src/js/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

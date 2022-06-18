@@ -62,9 +62,8 @@ const winnerControl = () => {
       getCellValue(p1) === getCellValue(p2) &&
       getCellValue(p2) === getCellValue(p3)
     ) {
-      winner = track;
       // Winner O
-      if (track === "O") {
+      if (winner === "O") {
         ++scores.oScore;
         elems.oScore.innerHTML = scores.oScore;
       }
@@ -94,6 +93,7 @@ const handleClick = (e) => {
   if (isNext) {
     if (dataCell === "") {
       //track
+      winner = track;
       switch (track) {
         case "O":
           cell.innerHTML = icons.iconO;

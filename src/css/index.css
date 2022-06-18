@@ -16,7 +16,7 @@
   --icon-o: #545454;
   --icon-x: #f2ead3;
   --gray: #ddd;
-  --border-width: 5px;
+  --border-width: 8px;
 }
 /** common classes **/
 .flex-center {
@@ -79,9 +79,6 @@ body {
 }
 .score-container,
 .score {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: row;
   margin-top: 40px;
 }
